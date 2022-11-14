@@ -1,7 +1,8 @@
 'use strict';
 
 (function () {
-  const links = document.querySelectorAll('.navigation-link');
+  const links = document.querySelectorAll('.navigation-link'),
+        more = document.querySelector('.more');
 
   function renderGoods(goods) {
     // console.log(goods);
@@ -76,6 +77,13 @@
   if (localStorage.getItem('goods') && window.location.pathname === '/goods.html') {
     renderGoods(JSON.parse(localStorage.getItem('goods')));
   }
+
+  if (more) {
+    more.addEventListener('click', (e) => {
+      e.preventDefault();
+      getData();
+    });
+  } 
 
 
   // localStorage.setItem('goods1', JSON.stringify({name: 'Neo'}));
